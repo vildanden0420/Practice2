@@ -24,6 +24,7 @@ public class Main2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
         Log.i("알림","두번째 액티비티 생성");
+        setTitle("학점 계산");
         init();
 
 
@@ -42,7 +43,7 @@ public class Main2Activity extends AppCompatActivity {
 
         iv = (ImageView)findViewById(R.id.imageView);
         Log.i("알림", "findViewById");
-        iv.setVisibility(View.INVISIBLE);
+        //iv.setVisibility(View.INVISIBLE);
 
 
 
@@ -72,8 +73,21 @@ public class Main2Activity extends AppCompatActivity {
                 int total = hanScore + matScore + engScore;
                 int avg = total/3;
 
-                if(total>=90){
-                    iv.setVisibility(View.VISIBLE);
+                if(avg>=90){
+                    iv.setImageResource(R.drawable.a);
+                   // iv.setVisibility(View.VISIBLE);
+                }else if(avg>=80){
+                    iv.setImageResource(R.drawable.b);
+
+                }else if(avg>=70) {
+                    iv.setImageResource(R.drawable.c);
+                   // iv.setVisibility(View.INVISIBLE);
+                }else if(avg>=60){
+                    iv.setImageResource(R.drawable.d);
+                   // iv.setVisibility(View.INVISIBLE);
+                }else{
+                    iv.setImageResource(R.drawable.f);
+                   // iv.setVisibility(View.INVISIBLE);
                 }
 
                 t1.setText(""+total);
@@ -98,7 +112,7 @@ public class Main2Activity extends AppCompatActivity {
                 t1.setText(""+0);
                 t2.setText(""+0);
 
-                iv.setVisibility(View.INVISIBLE);
+                iv.setImageResource(0);
                 Toast.makeText(getApplicationContext(),"초기화 되었습니다.", Toast.LENGTH_SHORT).show();
             }
         });
